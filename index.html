@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UPSTREAM · $UPSTREAM</title>
+<meta name="description" content="Launch a coin on any GitHub repo. The top 9 contributors split 90% of its creator fees by commits.">
+<meta property="og:title" content="UPSTREAM · $UPSTREAM">
+<meta property="og:description" content="Launch a coin on any repo. Every contributor gets paid.">
+<meta property="og:image" content="og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAIAAADTED8xAAAbvElEQVR4nO3deXgURd4H8OqqPmYmk5kkXG64CQRWAWV18YgJYARfWYT4ioiogCCCi4D37rq6h+vxIiICnsgVQFfxXAHFg0O8FRRUDiGJirrq5pyemZ6Znu6u948iWZYlEUl6pqfr93n8w8f49HRP17e7ftU11YLP50MA8AqnewcASCcIAOAaBABwDQIAuAYBAFyDAACuQQAA1yAAgGsQAMA1CADgGgQAcA0CALgGAQBcgwAArkEAANcgAIBrEADANQgA4BoEAHANAgC4BgEAXIMAAK5BAADXIACAaxAAwDUIAOAaBABwDQIAuAYBAFyDAACuQQAA1yAAgGsQAMA1CADgGgQAcA0CALgGAQBcgwAArkEAANcgAIBrEADANQgA4BoEAHANAgC4BgEAXIMA8EgQhHTvglNAALiDMdZ1Pd174RQQAL5gjGOxWNeuXdK9I04BAeAIITgej3fu3PnNN7dOmnSFpmmiKKZ7p9JM8Pl86d4HkAqCIFBKEUIbN24oLi4Jh9WRI0e9/fY7gUDAMIx0713awB2AFxhjTdMeeGB+cfHQ+voaj8ezatXKzp07x2IxjPltBvweOVdEUQyHw7NmzZw2bYaq1sqyomnRnj17lZcvFwTBsixux4UgAO4niqKqqqWl58ybNy8aDWFM2H8MhepKS0fcd9+9mqZxexOAGsDlCCGxWKxr167btm3t2LFDIhE/vK2bphkI5E2fPm3JkqV8FgOODICAkK13ZIvauHEnaSp8X3315bPPPjsUajhi2IdSKggYYzxixPlvv/02hxlwYgBo0qKmjW0UKwTx0eMlhITD4SVLHp02bXooVCOK0n//P5Zlejy+7777rrh46I8//qgoimVZqd/VdHFeACwqdfSQHNm+63TiW40mLNdngHX9Z8++duHCxaFQbQtD/oZhBIO5mzdvGjnyAkJI032DB84KgEAEI6x3v+OUjpMLjHpdIDY0Uix8cclb2u4G7BNd3Bdirf/cc8/ZsGF9MqlTSlse5zGMZDDY/sEHF82aNSc7O9s0zZTtano5svanNv/jdoQQTdN69uy5cuUKhNCxjHKKoqSqdddeO3v69GnhcJifJ8SODABoBUEQDMOQZXn1avac61iHODHG0ai6YMGCkpJiVVU5yQAEwG3YdLdFixYUFZWEQvXH3o4FQbAsQxRJefnKrl27cPKE2P1HyBX2xPe662ZPnXp1KFR71GGfFmBMNC3ao0eP8vIVGGMenhBDANyDFb7nnTf83nvnRiIhQsjxbSQUqhs27Nz58+fx8ITY5YfHD1b49u5dsGLFcsuyKD3+izcriGfOnDVjxtWuL4ghAG7ACl9F8axeXX7CCb+Ix1vbfW8siO8fMqTE3QUxBMANWOH74IMPnHFGkar+jMK3OYIgWJZJCF61amW3bt1cXBC786i4wgrfG2+8fvLkqcdR+DaH/X6gW7fuq1atIIS4tSCGAGQ2Vvief/5599xzTyTScHyFbwsbD4Xqhgw5Z8GC+9xaELvwkPhBCIlGtT59+ixfvsyyzJ+c73AcWEE8Y8bMmTOvcWVBDAHIVKzw9fk8q1eXd+rUqfWFb3MwxtFo6L777hs2bKj7CmIIQKZqLHwXnX76map65ET/NsR+M4mxUF6+okeP7i4riN1zJFxhhe/NN984ceKVbVj4NgdjHItpXbt2Ky9fKYqimwpiCEDmYYXvyJHn3333XW1e+LbwoaFQXUnJ0AcemO+mgtglh8EPQkg0Gu3bt3D58qWmadhR+DZHFCVVrb366mtmzZrpmoIYApBJMGaFr2/16vKOHTvG4/EUX4kxJtFoaN68eaWl57ijIIYAZBYhFos9/PDiX//6DFsL32Y//tAiQmjlyhU9e/bQNC01HTD7QAAyhiiKkUjkd7+7+fLLJ6Wg8G0OK4i7dOm8enW5LMuGYWR0QQwByAys8B016jd33XVnygrfFnYmFKovKipZuHBBpo+KZvCu84MVvv369Vu2bKlhJFNZ+DZHFKVQqPaqq66eM2dWRhfEEACnwxgnk8msrKw1a8o7dGgfjycccsUlhESjoXvvnTt8+LmZWxA74qsELYvH44888tCppw5W1QZRdErRyQpihOjKlcsLCnplaEEMAXA0VvjeeuvvJky4PI2Fb3PYdIz8/PxVq8oVRcnEghgC4Fys8B0z5oI77vhbOJzmwrc5rCA+66yzFy16IBML4gzbXX4QQiKRyIkn/nLp0seTSR2h9Be+zWFPiKdMuer66+dkXEEMAXAiVvhmZ2evWbMqLy9P151S+DYHYxKJNMyd+3/nnTciswpiR3+tPIvH448++vCgQaeFw6ozOz+HY+vpWpa1YsWy3r17Z1BB7MgAWJSaNv7j8OVBWeF72223jh8/oeVVnR0FYxyPx0444RerV6/0eDyZUhA78cvFPlHMkxFCNq0OLRDBsRlghW9Z2Zi//vWv4XAbrO+QSqIoqmr9GWcULV688Morp2bEKtMO+34pEkQcfr8GYcHU7LmEYGQ06ILoxAywwvekk05aunSJrsfTvTvHgz0hnjx5yueffz5//gLnv3LGWe8HQAghAVkxk9r5khLsER14E8AYG4bh8Xi2bNk0cOCASCScKd3oI7CXayiKd8yYslde2ejwDDgvAAghbG/vkVpOLAMwxtFo9Kmnnhw3bnwGdf2PyrIsWVbq6xtKSoZWVVX5fD7H9oWgCHYEVvjefvutLmj9qLEg7tSp45o15T6f18kFsSPvAJxhhe9FF124du3aaDTs8CH/Y8deu7Rq1cpJk650bEHsku86c7HCd8CA/kuWPJahhW9zWEE8ceLkm2++0bFPiJ14BxAEAWNs34sKnfMaUFb4er3erVs39e/fP3ML3+awk+jx+MrKLtyw4WUHFsRODEAikbD1dunxeBzSzWCF79q1fx879hIXdP2PyrIsWZZDIbWkZFhFRYXTCmJnBYC95eG3v50xatToaNSWKQCCINx88+8rKysVRUnv23BZ1//Pf779L3+5w62tnzEMIxAI7tixo7R0hK7rbGmtdO/UIc4KAGsTy5YtmTJlmmXpGNvRJvDgwb/+6KPtfr8/jaeBvcO9rGzMM888HYmEBUFozTgJ6zS24e4dgc3zac0Wkslku3YdVq1aNWnSlT6fzznv4nbiVUfTNNM0QyFblv3AGJummd5ROfY7kpKS4meeWSuKck6O2LrRCAEhIxqNttn+/SdKqaIokuRp9XaMiRMnf//993/84+1erxcC0CyMMWlkx8bTPiZNKcUYi6I4ffqMVk6cFAQhHo/37Vt422232jHcbpqmz5e9fv26J5540ufzmubx3wcopRgLlCK/36/retrPAuPEALgepVSSpM2bt7TVBk8+eeCf/nRbW23tcJRSUZR279797LPPtdU2vV6vQ1o/ggCkC6XU7/e3frQXYxyNRoLBYFvt2FF5vR5RJNnZbTOI6ahRIAhA2liW1foqnFJqGKbdTcqyDn2Ko9pum3DEcDgA6QIBAFyDAACuQQAA1yAAgGsQAMA1CADgGgQAcA0CALgGAQBcgwAArkEAANcgAIBrEADANQgA4BoEAHANAgC4BgEAXIMAAK5BAADXIACAaxAAwDUIAOAaBABwDQIAuAYBAFyDAACuQQAA1yAAgGsQAMA1CADgGgQAcA0CALgGAQBcgwAArkEAANcgAIBrEADANQgA4BoEAHANAgC4BgEAXIMAAK5BAADXnBgASu3dviAI9n5Aytl9RNTuU5I+TgyAYRg2bZlSSghRFMU1Z5Q1fUVRCCH2HZR9ZyTtnBmApE1bZgGQZRm56z7AAmDf9iEAKRWPJ2zaMqWIEDEQCNi0/XQJBgMIYfvuAPF43KYtp50TA6Cqqk1bptRCiOTn/wK55Q7AjiI/P9/WANh3RtLOiQEIh8O2bj8/P9/W7aeefUfEAtZ4RlxSOB3OWQFg17CamlqELDuu0IIgIEQLCwuRW0Y2LMsSBKGwsI993xilRm1tHbJ/dC4tnBUAprq62jSTGLf9vgmCYJp6376FWVlZLijsBEEwDCMQCPTu3dswdJsCoOuJmpoa5JZLxhGcFQBKKca4pqZW0zSbAqDrevfu3bp06azruh0fkUp2Hw4bNItGo7W1dYSIEADbUUolSaqurq6vrxfFtv/GBUFIJpM5Oe1OO+000zQzvQ7GGFuWdfrpg/3+nGTSlrFjURRra+tqa2slSbRj+2nnuAAQQhoaGn788V92BAAduo8LQ4YUIzcMBFGEUElJCULUjmOhlIqi9MMPP6iqauuDtjRyVgAQQoSQRCJRWVmFsWTHN44xNox4SUlxMBjUdVv6zakhCEIiobdv376o6MxkMmZHd86yLEEQKyoqDcPI9O5icxx3VKxF7tmzByHBpgDEYrHevQuLis5KJBKZe14xxolEYsiQkh49esVicfuSvHv3buSGu+XROe70s0a/d+9em8b1EEKWZREijh8/zgX39PHjx9nXNDHGlBp79+5DLh0CQs4MAMb4iy/2h8MhUbSl8CKExGKR3/xmZEFBQTwez8SbALuPnXjiiSNGjNC0iB0TgSiloig2NNQdOFBBCLEsq80/wgkcd+4ty1IUpaqqqqrqS0Xx2PG9s9HDvLyOkydPTCZteeBgN4yxYRhTp14ZCOTaNP5DKVUUz/79FQcPHnTT/NkjOPHcS5IYjWoff/wxIZJNFx5CSCIRnTJlcn5+fiKRyKwOLsY4Fov36NHjiisuj8dtufwjhCzLwljavn1HIpGw6VbsBE4MAEICQuj99z9k/2LLBwhCPB7Pz+82a9bMRCJh61ziNocxTib166+f06HDCfall00b+eCDDxBCrpwFxAg+ny/d+3AkjLGmaf37n/TOO9swtmuSIys2dD1ZVFS8f/8Bj8eW7labI4RomjZw4MBt27YKgl3tkj2QicfjZ5xxdmVlpcfjgS5Q6liW5fF49+374tNPP/N4vDa1S0EQkkkjJyf3nnvuMoyMeSrMGuLcuXdnZWWZpmnTp7BT8MknOysrK71er1tbP3JmABBCokh0Xd+8eQvGdpUB7FNUtWH06LJp06aEw2HnP+2XJDESicycec3w4f8TDjfY13OjlAqC+MYbm0zTzMRBgmPnxC4QQghjHI1Gi4vPfuON1xIJG5/ysHt9LJYYMmTonj17bb2stpIoknA48qtfDdqyZRMhmE2Etu3TKCHikCHnbN++w+fzZUTn8Pg4NNyWZXk8nu3bd3z22ader40noHF6XHDlyuV+v9+xo6IY40RCz83NXblyuc/nMwzDvtZvWZbXm7Vjx8c7d+7yejOjNDpuTjzZjCRJmqa9+OJLhMi2ngNCSDisnnrq4GXLHk8kEpTaMrGsNdisT9M0y8tX9O8/MBIJ2zpsxQZAX3jhRV3XCXF6t7CVnBsAy7IIIS+++FIkErK7dy6KYihUO3bsuEWLHohGo4IgOCcDgiBQSjVNe/TRh0eNGh0K1dk6Kk8plWW5oaFm3br1oig6tkPYVhwdAK/Xu2fPnm3btnm9frvPhCiKqlp37bWz5869JxKJIISc0Bdio8DRaHThwgVTp04LhWrtfibF+j+bNm05cKDC63Xt6GeT9J/jFgiCYJpmefnq1FyPCSGqWnfLLb9/8MFFmqYlk8n0PiAjhCSTyUQi/thjj8yefV0KWj9CSBCQZVnl5avYDyfs/ri0c+goUBPLorIsvffeW336FMbjtsx6P4JpmoFA3tq1T02fPiMUUgOBgE2TbVomSVIopObkBFesWFpWdlFqWr9lWT5f1q5du4qLh1KKHNMNtJGj7wAIIVmWVFVdtmyFJKVoOIIQEgrVjhs3fvPmNwYOHBAKhTDGqewOsY8LhUKDBp28deumlLV+dKjukpcsWappmvOfirQJp98B2MIHubk5H374XseOHZPJZGq6Q4ZhZGcHwmH1D3+47ZFHHsUY+/1+0zRt7RMLgkAIiUQilNJrrplx9913Zmdnh8Nqqlo/VRTlm28ODh58lqZpbv0N5BGcfgeglCqK8sMPPy5ZslRRUveUShTFSCQsy/LDDz+ybt0/Bg4coKqqruuiKNpxN8AYi6Ko67qqqgMHDli//qWHHnpYlqVIJJyymZiWZcqy95FHHqurq5NlmYfWj5x/B0D/vgnkfvjhux07dkomU/dDXkqpZVmBQE44rC5ZsvShhx768suvCCHsS7Msq5WtRBAEFidN00zT7N692+zZs6ZNuyo7O6Cq9RiTlB2pZVmK4jl48ODpp3N0+UfOvwOgf98Efli48EFF8aVyZJr1SVS1gRB84403vffeO3Pn3tOvX79wOBwOhw3DIISIIsEYH3tLZY1eFAkhxDAMtql+/frOnXvP+++/e8MNNxGCVbWBEDGVzyIsy5Jl7/33P8DV5R9lxB0AISQIgmVZkiS9995bhYWFsVgqhoMORyk1TVNRFI/Hr6p1Gze+tnbtM2+99da//lWNEMIYswXK2V41tR5KqSAgNpjIWrNlWYZh6LrOCvoOHToMGzZ03LiLhw8vDQTy4vEI+3FCih/DmaaVlZW1c+fOkpJhCCFBcOcqiEeVGQFAhyYshC++eOzatU+rqo0TIVvAYiBJks+XjRD98suqt99+Z+vWNz/66KOvvz54jEsoB4PB7t27nX764KFDh5x55hk9exYgJGhamD12SMsTaMsys7ICZWUXrlu3Pjs72/VPfw+XMQFAjVNE//GP5y+4YIzdMwJawAoDhJDH45FlH0IoHK7/5ptvKiu/3L//i2+//a6mpra+vr7pUZosy+3a5XXp0iU/P79374I+ffp06dLZ789BCOm6xpbe/1mdqLZlGEYw2O7pp58cP/4y3lo/yrgAxOPxwsLCd97ZJsuSzfOBf1pTEkRRlGVZFOXGmooiZDL4ELHxT5Zh6Lqus6V509juGUopIWI0Gj3zzKKvvz6oKIq7537+t0x62GFZls/n27Nnz5133nXfffen7PFQc1iJzHYsFotRqrHef+NcukNtmzZq+pMgYIf8Ctk0Tb8/54YbbqyoqAwEAi5YMfvnyqQ7AMMWNXn55XXnnjs8FKp38YIFdjMMIxjMW7/+pTFj/tfdv3ppQeYFgHWEevXq9e67b/l8PsNw6E9YHM6yLFlWamtri4qK//nPf8oyd50fJvOaDusI7d+/f86c67zeLH5GrNucLCuzZs356quv7Vt5wPkyLwDo0ESd7Cee+PvixQsDgby0zNbMaMlkMjs7d+7cuc8//wKfXf8mmdcFYtjvpCilGzasGzbsnDSOimYcw0gGg+1feWX96NEXKoqC3Lvw7bHI1AAghDDGuq63b99uy5ZNBQUF0WjY9T9gbT02y3X37t2lpcNVNSxJNq46kxEysgvEsGV0v//+h3HjLg2FQori5e0hzs9lmqbX66uurh437tLa2jpZtne1gYyQwQFACJmmmZ2dvWvXrgkTLmOTheCMNocN+yQSiUsuGb9v3z7284Z071T6ZXYAEELsPaGvvvr65ZdPFEXJxSvZtwZ7JwhCaPz4S9988y3OC9/DZXwAUGMGnn/+hSlTpno8PsjAESzLEkVRkuQrrpj48ssbofUfzg0BQI0ZWLPmyUmTJkmSzMOCNseITV8VBDxhwmXPPvs8tP4juCQA6LAMXHrpBISwx+OBDBiG4fV6DcMcO/biZ599Dlr/f3NPAFBjBp577oWysgtVNez3+3k+3+zbqK2tGzVq9IYNr0DrPypXBQA1nvXXXnu9tHTEgQOVwSCnz4mTyWQw2O7zz3cPG3bum29ug9bfHLcFADVm4NNPPz3nnNJNm17PyWlvmhY/ZTFbRjcnp/3GjS+Xlo744osvoPW3wIUBQI2Thaqra0aOvGD+/HmBQFCWZR4agWEYsiwHAjnz588bPbosFApx3g/8Se4MAEKI/YZdFMWbbrrlsssuV9VIMJhrGIZb571QStn8/oaG0Pjxl9500y2SJMmyDCMBLXNtABBC7DeTgUDgySf/XlRUvHHjK8FgO7YYSbp3rY2xBVqCwXYbN75SXDzk6afXBgIBtpRGunfN6dwcANR4XQwEAlVVVaNGjbnhhutjsXgwmGeapjsaB+vxB4N5sVhizpzZo0Zd8OWXX7FOv1vvdW0rg2eD/ixNC+337Vt4551/Gzt2rGkmI5FIulYiaT22Rovf7ydEfO6552+77U/79u3LyvKz9c3TvXcZw+V3gCZsGcNAIFBRUXnxxZeMG3fJZ5/tDgbbseI4sy6W7LamKEow2O7TTz+76KKLx44dd+DAgUAgQClH411tgpc7QBOMsSCgcDji9/unTLnyuuvm9OxZkEzGNE1L8TLox8GyLPbiHFn2VVYeWLx48dKly6PRqN/vZ39N9w5mHu4CwLBSOBaLderUafLkidOmXVVQUGiaiWg0yv6a7h38D00LEGVlZRGiVFVVPP7448uWLa+urvF6vTDxqTU4DQBqXNUnkUgkEon27dtfdtmESZMmDhp0CkKCpkXY+1LTfkNgl3xJknw+P0J0165dy5ateOqpp6qraxRFURTF7lcWuB6/AWAOj4HP5zvvvBGTJ08cNmxodnauZels1XK2fluK12SnlIoi8fmyBEFqaKjdsmXr6tVrXn/9jUgkAk2/DfEeAIbFwDAMTdMQQgMG9C8rG3PBBaMGDhygKFkIGbFYLJlMUkptCgP7gT97cCFJktfrRUiMx6Mff/zxCy+8uH79y/v27UMIeb1eSZKg6bchCMB/YC+G0DSNvar+lFNOLi0tHTHi3AEDBuTmtkNIsCw9kUgYhtG4MumhOPysSLDmSym1LIoQZa+HURQFYxkhVF9fs3Pnzjfe2LRp0+ZPPtmp6zohxOv1sndm2nXkvIIAHAXr/TfdEERR7NWr1+DBpxUXFw8adEpBQa+8vLzGZVWNZDLJ8sD6LS1cmxsXBhUIIaIoSpLENmJZen19Q1VV1fbtO95//4MPPviwoqKCtfWsrCz2AzcY4bEJBKAlLAmmacbjcdYiPR5P165d+/Xre+KJv+zXr2/37t07d87Py8vLysryeDyCIP3UJg1d16PRaE1Nzfff/3DgQMXnn+/eu3dvZWXVt99+y5ZKJ4R4PB5o96kBATgmTeuYm6bZtLg5QogQEggEcnNz27XL69ChQ8eOHYLBYHZ2tqIokiRJkphMGslkMh6Ph8MRVVVramrq6upqamqqq2vYS5bYdhoXWBebioG0HSpnIAA/G8aCIGC2NB2bimMYxs8qTAkRJUlkr1Rq2g7UtWkBAWgtdmdoGhpqoRpuqn1R47BPqvYRNAvWEmytw5s1yDiOnvoCgN0gAIBrEADANQgA4BoEAHANAgC4BgEAXIMAAK5BAADXIACAaxAAwDUIAOAaBABwDQIAuAYBAFyDAACuQQAA1yAAgGsQAMA1CADgGgQAcA0CALgGAQBcgwAArkEAANcgAIBrEADANQgA4BoEAHANAgC4BgEAXIMAAK5BAADXIACAaxAAwDUIAOAaBABw7f8BKvXi6i34WgEAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#0a0a0a;--paper2:#0f0f0f;--card:#121212;--ink:#f4f4f0;--ink2:#b4b4ac;--dim:#76766f;--or:#39d353;--line:rgba(244,244,240,.12)}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html,body{overflow-x:clip;background:var(--paper);color:var(--ink)}
+body{font-family:"Schibsted Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.k{font:500 11.5px "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+
+nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1.5px solid var(--ink)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;letter-spacing:.02em;font-size:18px}
+.brand img{width:26px;height:26px}
+nav .links{display:flex;gap:22px;margin-left:auto;font:500 12px "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+nav .links a{text-decoration:none;color:var(--ink2)}
+nav .links a:hover{color:var(--or)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 18px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font:700 13px "JetBrains Mono",monospace;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--or);border-color:var(--or);color:var(--paper)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ca{display:inline-flex;align-items:center;gap:10px;height:42px;padding:0 14px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:500 12.5px "JetBrains Mono",monospace;cursor:pointer}
+.ca b{font-weight:700}
+.ca.ok b::after{content:" ✓ copied"}
+
+/* hero */
+.top{border-bottom:1.5px solid var(--ink)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:0}
+.hero-l{padding:64px 40px 54px 0;border-right:1.5px solid var(--ink)}
+.hero h1{font-weight:900;font-size:clamp(46px,5.6vw,86px);line-height:.92;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;color:var(--or)}
+.hero .sub{margin-top:20px;font-size:18px;line-height:1.5;color:var(--ink2);max-width:520px}
+.repo-in{margin-top:30px;display:flex;border:2px solid var(--ink);background:var(--card);max-width:600px}
+.repo-in span{display:flex;align-items:center;padding:0 0 0 16px;font:500 16px "JetBrains Mono",monospace;color:var(--dim);white-space:nowrap}
+.repo-in input{flex:1;min-width:0;height:58px;border:0;background:transparent;font:700 17px "JetBrains Mono",monospace;color:var(--ink);padding:0 10px 0 2px;outline:none}
+.repo-in button{border:0;border-left:2px solid var(--ink);background:var(--ink);color:var(--paper);font:700 14px "JetBrains Mono",monospace;padding:0 22px;cursor:pointer;letter-spacing:.04em}
+.repo-in button:hover{background:var(--or);color:var(--paper)}
+.status{margin-top:12px;font:500 12.5px "JetBrains Mono",monospace;color:var(--dim);min-height:1.2em}
+.status.err{color:var(--or)}
+.hero-r{position:relative;min-height:560px;overflow:hidden;background:var(--paper2);margin-right:-32px}
+#river{position:absolute;inset:0;width:100%;height:100%;display:block}
+.river-cap{position:absolute;left:18px;bottom:16px;right:18px;display:flex;justify-content:space-between;gap:10px;font:500 11.5px "JetBrains Mono",monospace;color:var(--ink2);pointer-events:none}
+
+/* split */
+section{border-bottom:1.5px solid var(--ink)}
+.sec{padding:70px 0}
+.sec-h{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:28px}
+.sec-h h2{font-weight:900;font-size:clamp(36px,4.4vw,64px);letter-spacing:-.03em;line-height:.95}
+.sec-h p{max-width:420px;color:var(--ink2);line-height:1.5}
+.split{display:grid;grid-template-columns:340px 1fr;border:1.5px solid var(--ink)}
+.card{padding:24px;border-right:1.5px solid var(--ink);background:var(--card)}
+.card .owner{display:flex;gap:12px;align-items:center}
+.card .owner img{width:52px;height:52px;border:1.5px solid var(--ink)}
+.card h3{font-size:24px;font-weight:800;letter-spacing:-.01em;word-break:break-word}
+.card .desc{margin-top:14px;color:var(--ink2);line-height:1.45;font-size:15px}
+.stats{display:grid;grid-template-columns:1fr 1fr;margin-top:18px;border:1.5px solid var(--ink)}
+.stats div{padding:10px 12px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.stats div:nth-child(2n){border-right:0}
+.stats div:nth-last-child(-n+2){border-bottom:0}
+.stats b{display:block;font:700 18px "JetBrains Mono",monospace;margin-top:3px}
+.card .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.bar{display:flex;height:46px;border-bottom:1.5px solid var(--ink)}
+.bar div{height:100%;border-right:1.5px solid var(--paper);position:relative;transition:flex-grow .8s ease}
+.bar div:last-child{border-right:0}
+table{width:100%;border-collapse:collapse;font:500 14px "JetBrains Mono",monospace}
+th{text-align:left;font-weight:500;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);padding:12px 16px;border-bottom:1.5px solid var(--ink)}
+td{padding:10px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.who{display:flex;align-items:center;gap:10px}
+td.who img{width:28px;height:28px;border:1.5px solid var(--ink)}
+td.who a{text-decoration:none;font-weight:700}
+td.who a:hover{color:var(--or)}
+td.pct{font-weight:700;text-align:right}
+th.r{text-align:right}
+tr.burn td{color:var(--or);font-weight:700}
+.sw{display:inline-block;width:12px;height:12px;border:1.5px solid var(--ink);margin-right:8px;vertical-align:-1px}
+.copybox{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:16px;border-top:1.5px solid var(--ink);background:var(--card)}
+.copybox p{font:500 12.5px "JetBrains Mono",monospace;color:var(--ink2);max-width:560px;line-height:1.5}
+
+/* trending */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--ink);border-left:1.5px solid var(--ink)}
+.tile{padding:18px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);cursor:pointer;background:transparent;text-align:left;font:inherit;color:inherit;display:flex;flex-direction:column;gap:10px;min-height:170px}
+.tile:hover{background:var(--card)}
+.tile .t{display:flex;gap:10px;align-items:center}
+.tile img{width:30px;height:30px;border:1.5px solid var(--ink)}
+.tile b{font-weight:800;font-size:16px;word-break:break-all;line-height:1.15}
+.tile p{color:var(--ink2);font-size:13.5px;line-height:1.4;flex:1;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical}
+.tile .m{font:500 12px "JetBrains Mono",monospace;color:var(--dim);display:flex;gap:14px}
+.tile .m span:first-child{color:var(--or);font-weight:700}
+
+/* how */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--ink)}
+.step{padding:28px 26px;border-right:1.5px solid var(--ink)}
+.step:last-child{border-right:0}
+.step .n{font:700 13px "JetBrains Mono",monospace;color:var(--or)}
+.step h3{font-weight:900;font-size:28px;letter-spacing:-.02em;margin:12px 0 10px;line-height:1}
+.step p{color:var(--ink2);line-height:1.5}
+.rules{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px}
+.rules div{display:flex;gap:12px;line-height:1.5;color:var(--ink2)}
+.rules div::before{content:"";flex:none;width:10px;height:10px;background:var(--or);margin-top:7px}
+
+/* token */
+.token{padding:90px 0;text-align:center}
+.token img{width:130px;height:130px}
+.token h2{font-weight:900;font-size:clamp(64px,10vw,150px);letter-spacing:-.05em;line-height:.85;margin:20px 0 12px}
+.token p{color:var(--ink2);max-width:520px;margin:0 auto;line-height:1.5}
+.token .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:22px;padding-bottom:28px;font:500 11.5px "JetBrains Mono",monospace;color:var(--dim)}
+
+@media (max-width:1000px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero-l{border-right:0;border-bottom:1.5px solid var(--ink);padding-right:0}
+  .hero-r{min-height:420px;margin:0 -32px}
+  .river-cap{left:32px;right:32px}
+  .split{grid-template-columns:1fr}
+  .card{border-right:0;border-bottom:1.5px solid var(--ink)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  nav .links{display:none}
+  nav .btn{margin-left:auto}
+  .hero-l{padding:40px 0 34px}
+  .hero-r{margin:0 -16px;min-height:360px}
+  .river-cap{left:16px;right:16px}
+  .repo-in span{font-size:13px;padding-left:10px}
+  .repo-in input{font-size:15px;height:52px}
+  .repo-in button{padding:0 14px}
+  .sec{padding:54px 0}
+  .grid{grid-template-columns:1fr}
+  .tile:nth-child(n+7){display:none}
+  .split{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:0;border-bottom:1.5px solid var(--ink)}
+  .step:last-child{border-bottom:0}
+  .rules{grid-template-columns:1fr}
+  th,td{padding:9px 10px}
+  td.cm,th.cm{display:none}
+  .stats b{font-size:16px}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="#top"><img src="data:image/png;base64,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" alt="">UPSTREAM</a>
+  <div class="links"><a href="#split">The split</a><a href="#trending">Trending repos</a><a href="#how">How it works</a><a href="#token">$UPSTREAM</a></div>
+  <a class="btn" data-buy target="_blank" rel="noopener">Buy $UPSTREAM</a>
+</div></nav>
+
+<header id="top" class="top"><div class="wrap">
+  <div class="hero">
+    <div class="hero-l">
+      <div class="k">Coins for open source · on pump.fun</div>
+      <h1 style="margin-top:16px">Launch a coin on any repo. <em>Every contributor gets paid.</em></h1>
+      <p class="sub">The top 9 contributors split 90% of the coin's creator fees, weighted by their commits. The last 10% buys and burns $UPSTREAM. Works on org repos too.</p>
+      <form class="repo-in" id="form" autocomplete="off">
+        <span>github.com/</span>
+        <input id="repo" placeholder="owner/repo" spellcheck="false">
+        <button type="submit">SPLIT IT</button>
+      </form>
+      <div class="status" id="status"></div>
+    </div>
+    <div class="hero-r">
+      <canvas id="river"></canvas>
+      <div class="river-cap"><span id="cap-l"></span><span id="cap-r"></span></div>
+    </div>
+  </div>
+</div></header>
+
+<section id="split"><div class="wrap sec">
+  <div class="sec-h"><h2>The split</h2><p>Read live from GitHub. Bots are left out. Every contributor in the top 9 gets at least 1%.</p></div>
+  <div class="split">
+    <div class="card" id="card"></div>
+    <div>
+      <div class="bar" id="bar"></div>
+      <table>
+        <thead><tr><th>#</th><th>Contributor</th><th class="r cm">Commits</th><th class="r">Fee share</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="copybox">
+        <p>Launch on pump.fun and open fee sharing. Add these GitHub accounts with these percentages. pump.fun pays each one when they link GitHub to a wallet.</p>
+        <button class="btn" id="copy">Copy split</button>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="trending"><div class="wrap sec">
+  <div class="sec-h"><h2>Trending repos</h2><p>The fastest-rising new repos on GitHub this month, live. Tap one to see its split.</p></div>
+  <div class="grid" id="grid"></div>
+  <div class="status" id="tstatus"></div>
+</div></section>
+
+<section id="how"><div class="wrap sec">
+  <div class="sec-h"><h2>How it works</h2><p>No escrow, no middleman. The split lives inside pump.fun's own fee sharing.</p></div>
+  <div class="steps">
+    <div class="step"><div class="n">01</div><h3>Pick a repo</h3><p>Any public repo, personal or org. UPSTREAM reads its contributor list from GitHub and ranks them by commits.</p></div>
+    <div class="step"><div class="n">02</div><h3>Launch with the split</h3><p>Launch on pump.fun with fee sharing set to the top 9 contributors (90% by commit share) plus 10% to the $UPSTREAM burn wallet.</p></div>
+    <div class="step"><div class="n">03</div><h3>They claim</h3><p>Every trade pays the coin's creator fee. Each contributor claims their cut by linking their GitHub on pump.fun. Unclaimed fees wait for them.</p></div>
+  </div>
+  <div class="rules">
+    <div>Only the top 9 human contributors count. Accounts marked as bots are skipped.</div>
+    <div>Shares are whole percentages that always add up to 90. Nobody in the top 9 gets less than 1%.</div>
+    <div>Forks show their own contributors. Launch on the original repo to pay the people who built it.</div>
+    <div>The 10% burn slot buys $UPSTREAM and sends it to a burn address.</div>
+  </div>
+</div></section>
+
+<section id="token" class="token"><div class="wrap">
+  <img src="data:image/png;base64,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" alt="UPSTREAM">
+  <h2>$UPSTREAM</h2>
+  <p>Launched on pump.fun. Every coin launched with an UPSTREAM split burns a little more of it.</p>
+  <div class="row">
+    <a class="btn" data-buy target="_blank" rel="noopener">Buy on pump.fun</a>
+    <a class="btn ghost" data-chart target="_blank" rel="noopener">Chart</a>
+    <a class="btn ghost" data-x target="_blank" rel="noopener">X</a>
+    <button class="ca" data-ca><b>CA</b><span></span></button>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>UPSTREAM · $UPSTREAM · not affiliated with GitHub.</span><span>Contributor data: GitHub REST API, live.</span></div></footer>
+
+<script src="config.js"></script>
+<script>
+(() => {
+const CFG = window.UPSTREAM_CFG || {};
+const N = CFG.CONTRIBUTORS || 9, SHARE = CFG.CONTRIBUTOR_SHARE || 90, BURN = CFG.BURN_SHARE || 10;
+const $ = s => document.querySelector(s);
+const API = 'https://api.github.com';
+const INK = '#f4f4f0', OR = '#39d353';
+const PAL = ['#f4f4f0','#d9d9d3','#bdbdb6','#a2a29b','#888881','#6f6f69','#585853','#44443f','#33332f'];
+
+/* ---------- github ---------- */
+const cache = {};
+async function gh(path) {
+  const key = 'up:' + path;
+  try { const c = sessionStorage.getItem(key); if (c) return JSON.parse(c); } catch (e) {}
+  if (cache[path]) return cache[path];
+  const r = await fetch(API + path, { headers: { Accept: 'application/vnd.github+json' } });
+  if (r.status === 403 || r.status === 429) {
+    const reset = +r.headers.get('x-ratelimit-reset');
+    const mins = reset ? Math.max(1, Math.ceil((reset * 1000 - Date.now()) / 60000)) : null;
+    throw new Error(mins ? `GitHub's free limit is used up for your connection. Try again in ${mins} min.` : 'GitHub rate limit hit. Try again soon.');
+  }
+  if (r.status === 404) throw new Error('Repo not found. Check the owner/repo.');
+  if (!r.ok) throw new Error('GitHub error ' + r.status);
+  const j = await r.json(); cache[path] = j;
+  try { sessionStorage.setItem(key, JSON.stringify(j)); } catch (e) {}
+  return j;
+}
+function parseRepo(s) {
+  s = (s || '').trim().replace(/^https?:\/\//, '').replace(/^github\.com\//, '').replace(/\.git$/, '').replace(/\/$/, '');
+  const m = s.match(/^([A-Za-z0-9-_.]+)\/([A-Za-z0-9-_.]+)/);
+  return m ? m[1] + '/' + m[2] : null;
+}
+function isBot(c) { return c.type !== 'User' || /\[bot\]$|-bot$|^dependabot|^renovate|^github-actions/i.test(c.login); }
+function splitShares(list) {
+  const tot = list.reduce((a, c) => a + c.contributions, 0) || 1;
+  // floor with min 1, then largest remainder to reach SHARE
+  let raw = list.map(c => SHARE * c.contributions / tot);
+  let out = raw.map(x => Math.max(1, Math.floor(x)));
+  let sum = out.reduce((a, b) => a + b, 0);
+  const order = raw.map((x, i) => [x - Math.floor(x), i]).sort((a, b) => b[0] - a[0]).map(x => x[1]);
+  let k = 0;
+  while (sum < SHARE) { out[order[k % order.length]]++; sum++; k++; }
+  const desc = out.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]).map(x => x[1]);
+  k = 0;
+  while (sum > SHARE) { const i = desc[k % desc.length]; if (out[i] > 1) { out[i]--; sum--; } k++; if (k > 500) break; }
+  return out;
+}
+
+/* ---------- state ---------- */
+let current = null; // {repo, people:[{login,avatar,contributions,pct}]}
+const fmt = n => n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1) + 'k' : String(n);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+async function load(full, push) {
+  const st = $('#status'); st.className = 'status'; st.textContent = 'Reading github.com/' + full + ' …';
+  try {
+    const [repo, contribs] = await Promise.all([gh('/repos/' + full), gh('/repos/' + full + '/contributors?per_page=40')]);
+    const humans = (Array.isArray(contribs) ? contribs : []).filter(c => !isBot(c)).slice(0, N);
+    if (!humans.length) throw new Error('No human contributors found on this repo.');
+    const pct = splitShares(humans);
+    current = { repo, people: humans.map((c, i) => ({ login: c.login, avatar: c.avatar_url, url: c.html_url, contributions: c.contributions, pct: pct[i] })) };
+    render(); river.setPeople(current.people);
+    st.textContent = `${repo.full_name} · ${current.people.length} contributors · read live from GitHub`;
+    $('#repo').value = repo.full_name;
+    if (push) { try { history.replaceState(null, '', '#' + repo.full_name); } catch (e) {} }
+  } catch (e) { st.className = 'status err'; st.textContent = e.message; }
+}
+
+function render() {
+  const { repo, people } = current;
+  $('#card').innerHTML = `
+    <div class="owner"><img src="${esc(repo.owner.avatar_url)}&s=104" alt=""><div><div class="k">${repo.owner.type === 'Organization' ? 'Org repo' : 'Repo'}</div><h3>${esc(repo.full_name)}</h3></div></div>
+    <p class="desc">${esc(repo.description || 'No description.')}</p>
+    <div class="stats">
+      <div><span class="k">Stars</span><b>${fmt(repo.stargazers_count)}</b></div>
+      <div><span class="k">Forks</span><b>${fmt(repo.forks_count)}</b></div>
+      <div><span class="k">Language</span><b>${esc(repo.language || '—')}</b></div>
+      <div><span class="k">Last push</span><b>${new Date(repo.pushed_at).toISOString().slice(0, 10)}</b></div>
+    </div>
+    <div class="row"><a class="btn ghost" href="${esc(repo.html_url)}" target="_blank" rel="noopener">Open on GitHub</a></div>`;
+  const segs = people.map((p, i) => `<div title="${esc(p.login)} ${p.pct}%" style="flex-grow:${p.pct};background:${PAL[i % PAL.length]}"></div>`).join('') + `<div title="Burn ${BURN}%" style="flex-grow:${BURN};background:${OR}"></div>`;
+  $('#bar').innerHTML = segs;
+  $('#rows').innerHTML = people.map((p, i) => `<tr><td>${i + 1}</td><td class="who"><span class="sw" style="background:${PAL[i % PAL.length]}"></span><img src="${esc(p.avatar)}&s=56" alt=""><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.login)}</a></td><td class="r cm" style="text-align:right">${p.contributions.toLocaleString('en-US')}</td><td class="pct">${p.pct}%</td></tr>`).join('')
+    + `<tr class="burn"><td>10</td><td class="who"><span class="sw" style="background:${OR}"></span>Buy + burn $UPSTREAM</td><td class="cm"></td><td class="pct">${BURN}%</td></tr>`;
+}
+
+$('#copy').onclick = async () => {
+  if (!current) return;
+  const txt = current.people.map(p => `github.com/${p.login}  ${p.pct}%`).join('\n') + `\n${CFG.BURN_WALLET || 'burn wallet'}  ${BURN}%  (buys + burns $UPSTREAM)`;
+  try { await navigator.clipboard.writeText(txt); $('#copy').textContent = 'Copied ✓'; } catch (e) { $('#copy').textContent = 'Copy failed'; }
+  setTimeout(() => $('#copy').textContent = 'Copy split', 1500);
+};
+$('#form').onsubmit = e => { e.preventDefault(); const r = parseRepo($('#repo').value); if (!r) { $('#status').className = 'status err'; $('#status').textContent = 'Type it as owner/repo, like ollama/ollama.'; return; } load(r, true); document.getElementById('split').scrollIntoView({ behavior: 'smooth' }); };
+
+/* ---------- trending ---------- */
+async function trending() {
+  const since = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+  try {
+    const j = await gh(`/search/repositories?q=created:>${since}+stars:>200&sort=stars&order=desc&per_page=12`);
+    const items = (j.items || []).slice(0, 12);
+    $('#grid').innerHTML = items.map(r => `<button class="tile" data-r="${esc(r.full_name)}"><div class="t"><img src="${esc(r.owner.avatar_url)}&s=60" alt=""><b>${esc(r.full_name)}</b></div><p>${esc(r.description || '')}</p><div class="m"><span>★ ${fmt(r.stargazers_count)}</span><span>${esc(r.language || '')}</span><span>${new Date(r.created_at).toISOString().slice(5, 10)}</span></div></button>`).join('');
+    $('#grid').querySelectorAll('.tile').forEach(t => t.onclick = () => { load(t.dataset.r, true); document.getElementById('split').scrollIntoView({ behavior: 'smooth' }); });
+    return items[0] && items[0].full_name;
+  } catch (e) { $('#tstatus').className = 'status err'; $('#tstatus').textContent = e.message; return null; }
+}
+
+/* ---------- river ---------- */
+const river = (() => {
+  const cv = $('#river'), cx = cv.getContext('2d');
+  let W = 0, H = 0, dpr = 1, people = [], imgs = [], parts = [], heads = [];
+  function size() { const r = cv.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); layout(); }
+  function layout() {
+    const n = people.length + 1; const top = 72, margin = 18;
+    const slot = (W - margin * 2) / n; heads = [];
+    const shares = people.map(p => p.pct).concat([BURN]);
+    const mx = Math.max(...shares);
+    shares.forEach((s, i) => heads.push({ x: margin + slot * (i + .5), w: slot, lw: 3 + (s / mx) * slot * .7, y: top, s, i, burn: i === n - 1 }));
+  }
+  function setPeople(ps) {
+    people = ps; imgs = ps.map(p => { const im = new Image(); im.crossOrigin = 'anonymous'; im.src = p.avatar + '&s=96'; return im; });
+    layout(); parts = [];
+    $('#cap-l').textContent = 'trades flow in at the bottom';
+    $('#cap-r').textContent = `${ps.length} contributors + burn`;
+  }
+  // a stream path from bottom-centre to each head
+  function pathPt(h, t, wob) {
+    const sx = W / 2 + wob, sy = H + 10;
+    const c1x = W / 2 + wob * .6, c1y = H * .55;
+    const c2x = h.x, c2y = h.y + (H - h.y) * .42;
+    const u = 1 - t;
+    return [u * u * u * sx + 3 * u * u * t * c1x + 3 * u * t * t * c2x + t * t * t * h.x, u * u * u * sy + 3 * u * u * t * c1y + 3 * u * t * t * c2y + t * t * t * (h.y + 30)];
+  }
+  function spawn(big) {
+    if (!heads.length) return;
+    let r = Math.random() * 100, h = heads[heads.length - 1];
+    let acc = 0; for (const hh of heads) { acc += hh.s; if (r <= acc) { h = hh; break; } }
+    parts.push({ h, t: 0, v: .0025 + Math.random() * .002, wob: (Math.random() - .5) * 40, r: big ? 5 : 1.6 + Math.random() * 1.6 });
+  }
+  function draw() {
+    cx.clearRect(0, 0, W, H);
+    // stream bed
+    if (heads.length) {
+      for (const h of heads) {
+        cx.strokeStyle = h.burn ? 'rgba(57,211,83,.22)' : 'rgba(244,244,240,.08)';
+        cx.lineWidth = h.lw; cx.lineCap = 'round';
+        cx.beginPath();
+        for (let k = 0; k <= 30; k++) { const [x, y] = pathPt(h, k / 30, 0); k ? cx.lineTo(x, y) : cx.moveTo(x, y); }
+        cx.stroke();
+      }
+    }
+    // particles
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const p = parts[i]; p.t += p.v;
+      if (p.t >= 1) { parts.splice(i, 1); continue; }
+      const [x, y] = pathPt(p.h, p.t, p.wob * (1 - p.t));
+      cx.fillStyle = p.h.burn ? OR : (p.r > 4 ? OR : INK);
+      cx.fillRect(x - p.r, y - p.r, p.r * 2, p.r * 2);
+    }
+    // heads
+    heads.forEach((h, i) => {
+      const s = Math.min(50, h.w * .72);
+      const x = h.x - s / 2, y = h.y - s / 2;
+      cx.fillStyle = h.burn ? OR : '#121212'; cx.fillRect(x - 2, y - 2, s + 4, s + 4);
+      cx.strokeStyle = INK; cx.lineWidth = 1.5; cx.strokeRect(x - 2, y - 2, s + 4, s + 4);
+      if (!h.burn && imgs[i] && imgs[i].complete && imgs[i].naturalWidth) { try { cx.drawImage(imgs[i], x, y, s, s); } catch (e) {} }
+      if (h.burn) { cx.strokeStyle = '#0a0a0a'; cx.lineWidth = 2.5; const a = s * .22; cx.beginPath(); cx.moveTo(h.x - a, h.y - a); cx.lineTo(h.x + a, h.y + a); cx.moveTo(h.x + a, h.y - a); cx.lineTo(h.x - a, h.y + a); cx.stroke(); }
+      cx.fillStyle = h.burn ? OR : INK; cx.font = `700 ${h.w > 44 ? 12 : 10}px JetBrains Mono, monospace`; cx.textAlign = 'center'; cx.fillText(h.s + '%', h.x, y - 10);
+    });
+  }
+  let last = 0, acc = 0;
+  function loop(t) {
+    const dt = Math.min(64, t - last); last = t; acc += dt;
+    while (acc > 45) { spawn(false); acc -= 45; }
+    draw(); requestAnimationFrame(loop);
+  }
+  addEventListener('resize', size);
+  size(); requestAnimationFrame(loop);
+  return { setPeople, spawn, size };
+})();
+
+/* ---------- live trades (after launch) ---------- */
+function trades() {
+  if (!CFG.CA) return;
+  let ws; try { ws = new WebSocket('wss://pumpportal.fun/api/data'); } catch (e) { return; }
+  ws.onopen = () => { ws.send(JSON.stringify({ method: 'subscribeTokenTrade', keys: [CFG.CA] })); $('#cap-l').textContent = 'every $UPSTREAM trade drops in live'; };
+  ws.onmessage = ev => { try { const m = JSON.parse(ev.data); if (m.mint === CFG.CA && m.txType) for (let i = 0; i < 6; i++) river.spawn(true); } catch (e) {} };
+  ws.onclose = () => setTimeout(trades, 5000);
+}
+
+/* ---------- links ---------- */
+(function links() {
+  const ca = CFG.CA || '';
+  const buy = CFG.BUY || (ca ? `https://pump.fun/coin/${ca}` : '');
+  const chart = CFG.CHART || (ca ? `https://gmgn.ai/sol/token/${ca}` : '');
+  document.querySelectorAll('[data-buy]').forEach(a => { if (buy) a.href = buy; else a.hidden = true; });
+  document.querySelectorAll('[data-chart]').forEach(a => { if (chart) a.href = chart; else a.hidden = true; });
+  document.querySelectorAll('[data-x]').forEach(a => { if (CFG.X) a.href = CFG.X; else a.hidden = true; });
+  document.querySelectorAll('[data-ca]').forEach(b => {
+    if (!ca) { b.hidden = true; return; }
+    b.querySelector('span').textContent = ca.slice(0, 6) + '…' + ca.slice(-6);
+    b.onclick = async () => { try { await navigator.clipboard.writeText(ca); } catch (e) {} b.classList.add('ok'); setTimeout(() => b.classList.remove('ok'), 1300); };
+  });
+})();
+
+/* ---------- boot ---------- */
+(async () => {
+  const fromHash = parseRepo(decodeURIComponent(location.hash.slice(1)));
+  const first = await trending();
+  load(fromHash || first || 'ollama/ollama', false);
+  trades();
+})();
+})();
+</script>
+</body>
+</html>
